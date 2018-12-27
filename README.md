@@ -14,14 +14,48 @@ redis-aop is a Spring AOP based caching utility for redis, built on top of jedis
 #### Annotation Params:
 |Param Name|Description|Default|
 |----------|-----------|--------|
-|cacheName|Cache name from where data needs to be fetched. This is redis key| |
+|cacheName or cacheNames(Used in put and save)|Cache name from where data needs to be fetched. This is redis key| |
 |keyExpression|This expression will determine the cache key from method input params| |
 |isAsync| if ``true`` save in redis operation will be async|false|
 |keyGenerator|two values supported in this ``SHA`` or ``CONCAT``. If ``SHA``, cache key will be created using sha hash of param combination. If ``CONCAT`` is used, cache key will be created by concatenating params.| SHA|
 |compress|If set to ``true``, framework will use GZIP compression on data.|false
 
-## How it works?
+### Examples:
+1. Below Example depicts save operation:
+~~~
+@CachePut(cacheNames = {
+      "CUSTOM_OBJECT_CACHE" }, keyExpression = "#param1.id,#param1.name")
+public CustomObject saveObject(CustomObject object){
+  return customRepository.save(object);
+}
+~~~
+In above ``#param1`` represents first param,``#param2`` represents second and so on.
 
+2. Below example depicts delete operation.
+~~~
+@CacheDelte(cacheNames = {
+      "CUSTOM_OBJECT_CACHE" }, keyExpression = "#param1")
+public void deleteById(int id){
+  //some delete operation
+}
+~~~
+Above will delete any data in key CUSTOM_OBJECT_CACHE for hash ``#param1`` i.e. given ``id``
+
+3. Below example depicts get operation:
+~~~
+@Cacheable(cacheName = "CUSTOM_OBJECT_CACHE", keyExpression = "#param1,#param2")
+public void getByIdAndName(int id, String name){
+  //some  operation
+  return customObject;
+}
+~~~
+
+#### NOTE: If no ``keyExpression`` is passed, then all params will be used for creating cache key.
+## How it works?
+Uses spring AOP for annotation based interceptors and to parse input params Spring Expression is used.
 
 
 ## Getting started: project setup
+Just edit the [redis.properties](
+        redis-aop/src/main/resources/redis.properties
+      ) file
