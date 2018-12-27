@@ -1,0 +1,38 @@
+# Folders
+target/
+.settings/
+
+# Java class files
+*.class
+*.com
+*.dll
+*.exe
+*.o
+*.so
+
+# Package Files #
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.war
+*.ear
+*.rar
+*.tar
+
+# Logs and databases #
+######################
+*.log
+*.sqlite
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Eclipse Files
+.classpath
+.project
+
+# Intellij Files
+.idea
+*.iml
