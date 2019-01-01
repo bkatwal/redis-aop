@@ -2,7 +2,7 @@ image: maven:3-jdk-9
 
 stages:
   - build
-  - test
+  #- test
   - run
 
 build:
@@ -10,12 +10,12 @@ build:
   script:
     - mvn compile
 
-test:
-  stage: test
-  script:
-    - mvn test
+#test:
+  #stage: test
+  #script:
+    #- mvn test
 
 run:
   stage: run
   script:
-    - mvn install
+    - mvn install -DskipTests
