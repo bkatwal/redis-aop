@@ -3,7 +3,7 @@ redis-aop is a Spring AOP based caching utility for redis, built on top of jedis
 
 
 ## Usage
-``@CachePut @CacheDelete @Cacheable``, are the three annotaiton that available. 
+``@CachePut @CacheDelete @Cacheable``, are the three annotaiton that are available. 
 
 ``@CachePut``: Use it in any save method, when the saved object needs to be saved in redis too. Note, that the save object needs to be returned by method for it to work.
 
