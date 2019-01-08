@@ -1,4 +1,4 @@
-### GitLab [![build status](https://gitlab.com/bikas.katwal10/redis-aop/badges/master/build.svg)](https://gitlab.com/bikas.katwal10/redis-aop/master)
+### GitLab [![build status](https://gitlab.com/bikas.katwal10/redis-aop/badges/master/build.svg)](https://gitlab.com/bikas.katwal10/redis-aop/pipelines)
 
 # redis-aop
 redis-aop is a Spring AOP based caching utility for redis, built on top of jedis client. User can make use of several annotation that comes with this utility project.
